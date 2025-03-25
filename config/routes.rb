@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "landing#index"
 
-  get "/messages.html", to: "landing#messages", format: false
+  resources :messages, only: [ :index ], path: "/messages"
+  resources :comments, only: [ :index ], path: "/comments"
 end

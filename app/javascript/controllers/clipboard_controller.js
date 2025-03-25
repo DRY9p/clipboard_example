@@ -3,7 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="clipboard"
 export default class extends Controller {
   static targets = [ "source" ]
-
+  static values = {
+    supportedClass : {
+      type: String,
+      default: "clipboard--supported"
+    }
+  }
   copy(){
     navigator.clipboard.writeText(this.sourceTarget.value)
   }
