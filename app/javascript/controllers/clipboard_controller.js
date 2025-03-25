@@ -16,4 +16,14 @@ export default class extends Controller {
   //   this.sourceTarget.select()
   //   document.execCommand("copy")
   // }
+
+  static classes = [ "supported" ]
+
+    connect() {
+      navigator.permissions.query({name: 'clipboard-write'}).then( (result) => {
+        if (result.state == "granted") {
+          this.element.classList.add(this.supportedClass)
+        }
+      })
+    }
 }
